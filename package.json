@@ -1,0 +1,27 @@
+{
+  "name": "logistic-web-app",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Logistics platform — driver web app first, built to scale to dispatch/stock/inbound/outbound.",
+  "license": "MIT",
+  "packageManager": "pnpm@11.24.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "pnpm --filter driver-web dev",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test",
+    "test:e2e": "pnpm --filter driver-web test:e2e",
+    "format": "prettier --write \"**/*.{ts,tsx,js,mjs,json,md,css,yaml,yml}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,mjs,json,md,css,yaml,yml}\"",
+    "drivers": "node scripts/drivers.mjs"
+  },
+  "devDependencies": {
+    "bcryptjs": "^2.4.3",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.3"
+  }
+}

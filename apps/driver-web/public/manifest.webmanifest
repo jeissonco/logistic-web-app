@@ -1,0 +1,14 @@
+{
+  "name": "Runsheet",
+  "short_name": "Runsheet",
+  "description": "Daily driver runsheet — stops, collections and drops.",
+  "start_url": "/today",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "icons": [
+    { "src": "/icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
