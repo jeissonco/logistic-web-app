@@ -41,7 +41,7 @@ export const Input = forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTML
       <input
         ref={ref}
         className={cn(
-          'min-h-touch-target-min w-full rounded-lg border-2 border-outline-variant bg-surface-container-lowest px-3 text-body-md text-on-surface outline-none focus:border-secondary',
+          'min-h-touch-target-min w-full rounded-lg border-2 border-outline-variant bg-surface-container-lowest px-3 text-body-md text-on-surface outline-none focus:border-secondary-ink',
           className,
         )}
         {...props}
@@ -58,7 +58,7 @@ export const Select = forwardRef<
     <select
       ref={ref}
       className={cn(
-        'min-h-touch-target-min w-full rounded-lg border-2 border-outline-variant bg-surface-container-lowest px-3 text-body-md text-on-surface outline-none focus:border-secondary',
+        'min-h-touch-target-min w-full rounded-lg border-2 border-outline-variant bg-surface-container-lowest px-3 text-body-md text-on-surface outline-none focus:border-secondary-ink',
         className,
       )}
       {...props}

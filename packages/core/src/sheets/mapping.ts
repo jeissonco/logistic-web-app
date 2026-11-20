@@ -24,9 +24,10 @@ const BOX_SIZE_ALIASES: Record<string, BoxSize> = {
   '240l locked': '240L Locked',
   '240llocked': '240L Locked',
   'locked 240l': '240L Locked',
-  archive: 'Archive box',
-  'archive box': 'Archive box',
-  'archive boxes': 'Archive box',
+  '100 l': '100L',
+  '240 l': '240L',
+  'archive box': 'Archive',
+  'archive boxes': 'Archive',
 };
 
 function parseBoxSize(value: string): BoxSize | null {

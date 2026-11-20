@@ -1,24 +1,26 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 import './globals.css';
 import { Providers } from './providers';
 
-const inter = Inter({
+// Brand face from brandonsshreddingboxes.com.au.
+const poppins = Poppins({
   subsets: ['latin'],
-  weight: ['400', '500', '700', '800', '900'],
+  weight: ['400', '500', '600', '700', '800', '900'],
   display: 'swap',
-  variable: '--font-inter',
+  variable: '--font-poppins',
 });
 
 export const metadata: Metadata = {
-  title: 'Delivery Ops',
+  title: 'BSB Driver',
   description: 'Driver runsheet — stops, drops and pick-ups.',
   manifest: '/manifest.webmanifest',
-  appleWebApp: { capable: true, title: 'Delivery Ops', statusBarStyle: 'default' },
+  icons: { icon: '/brand/bsb-icon.png', apple: '/brand/bsb-icon.png' },
+  appleWebApp: { capable: true, title: 'BSB Driver', statusBarStyle: 'default' },
 };
 
 export const viewport: Viewport = {
-  themeColor: '#091426',
+  themeColor: '#2b2b2b',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
@@ -27,7 +29,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`light ${inter.variable}`}>
+    <html lang="en" className={`light ${poppins.variable}`}>
       <head>
         {/* Material Symbols is an icon font, not a text face — next/font doesn't cover it. */}
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}

@@ -53,7 +53,7 @@ function EmptyDay({ message }: { message: string }) {
   return (
     <div className="rounded-xl border-2 border-dashed border-outline-variant p-8 text-center">
       <p className="text-body-md text-on-surface-variant">{message}</p>
-      <Link href="/days" className="mt-2 inline-block font-bold text-secondary underline">
+      <Link href="/days" className="mt-2 inline-block font-bold text-secondary-ink underline">
         Pick another day
       </Link>
     </div>
@@ -64,7 +64,7 @@ function StatCard({ label, value, accent }: { label: string; value: number; acce
   return (
     <div className="rounded-xl border-2 border-outline-variant bg-surface-container-lowest p-card-padding shadow-lg">
       <p className="text-label-lg uppercase tracking-wide text-on-surface-variant">{label}</p>
-      <p className={`mt-1 text-headline-lg ${accent ? 'text-secondary' : 'text-primary'}`}>
+      <p className={`mt-1 text-headline-lg ${accent ? 'text-secondary-ink' : 'text-primary'}`}>
         {String(value).padStart(2, '0')}
       </p>
     </div>

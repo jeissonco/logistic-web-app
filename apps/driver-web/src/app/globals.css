@@ -1,46 +1,48 @@
 @import 'tailwindcss';
 
 /*
- * Design system ported from the Stitch export ("Delivery Ops - Driver Dashboard").
+ * Design system ported from the Stitch export ("Delivery Ops - Driver Dashboard"),
+ * re-coloured to Brandon's Shredding Boxes branding (charcoal + gold, Poppins).
  * Material 3 token names are kept so the Stitch markup maps 1:1 onto our utilities
  * (bg-primary, text-on-surface, p-card-padding, text-headline-lg, …).
  */
 @theme {
   /* Colours */
-  --color-primary: #091426;
-  --color-primary-container: #1e293b;
+  --color-primary: #2b2b2b; /* BSB charcoal */
+  --color-primary-container: #3d3d3d;
   --color-on-primary: #ffffff;
-  --color-on-primary-container: #8590a6;
-  --color-inverse-primary: #bcc7de;
+  --color-on-primary-container: #bdbdbd;
+  --color-inverse-primary: #f5d06b;
 
-  --color-secondary: #0051d5;
-  --color-secondary-container: #316bf3;
-  --color-secondary-fixed: #dbe1ff;
-  --color-on-secondary: #ffffff;
-  --color-on-secondary-container: #fefcff;
-  --color-on-secondary-fixed: #00174b;
+  --color-secondary: #f0b810; /* BSB gold — action fills */
+  --color-secondary-container: #f0b810;
+  --color-secondary-fixed: #fdf1cc;
+  --color-on-secondary: #2b2b2b;
+  --color-secondary-ink: #8a6200; /* gold dark enough for text on white (5.3:1) */
+  --color-on-secondary-container: #2b2b2b;
+  --color-on-secondary-fixed: #4a3700;
 
   --color-tertiary: #1e1200;
 
-  --color-background: #faf8ff;
-  --color-on-background: #131b2e;
-  --color-surface: #faf8ff;
-  --color-surface-bright: #faf8ff;
-  --color-surface-dim: #d2d9f4;
-  --color-surface-variant: #dae2fd;
+  --color-background: #f7f6f2;
+  --color-on-background: #1f1f1f;
+  --color-surface: #ffffff;
+  --color-surface-bright: #ffffff;
+  --color-surface-dim: #d8d6cf;
+  --color-surface-variant: #e6e4dd;
   --color-surface-container-lowest: #ffffff;
-  --color-surface-container-low: #f2f3ff;
-  --color-surface-container: #eaedff;
-  --color-surface-container-high: #e2e7ff;
-  --color-surface-container-highest: #dae2fd;
-  --color-inverse-surface: #283044;
-  --color-inverse-on-surface: #eef0ff;
+  --color-surface-container-low: #f4f3ef;
+  --color-surface-container: #efeee9;
+  --color-surface-container-high: #eae8e2;
+  --color-surface-container-highest: #e4e2db;
+  --color-inverse-surface: #2b2b2b;
+  --color-inverse-on-surface: #f4f3ef;
 
-  --color-on-surface: #131b2e;
-  --color-on-surface-variant: #45474c;
+  --color-on-surface: #1f1f1f;
+  --color-on-surface-variant: #4a4a4a;
 
-  --color-outline: #75777d;
-  --color-outline-variant: #c5c6cd;
+  --color-outline: #7a7872;
+  --color-outline-variant: #d2d0c8;
 
   --color-error: #ba1a1a;
   --color-error-container: #ffdad6;
@@ -64,7 +66,7 @@
   --radius-xl: 0.75rem;
 
   /* Typography */
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 
   --text-label-lg: 14px;
   --text-label-lg--line-height: 1.2;

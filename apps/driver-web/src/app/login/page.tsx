@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { api, ApiError } from '@/lib/api-client';
-import { Button, Card, Input, Select, Spinner, Icon } from '@/components/ui';
+import { Button, Card, Input, Select, Spinner } from '@/components/ui';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -34,10 +34,17 @@ export default function LoginPage() {
 
   return (
     <div className="flex flex-1 flex-col justify-center px-margin-mobile py-10">
-      <div className="mb-6 flex items-center gap-2">
-        <Icon name="local_shipping" className="text-3xl text-primary" />
-        <h1 className="text-headline-md font-black tracking-tight text-primary">DELIVERY OPS</h1>
-      </div>
+      <h1 className="mb-6">
+        {/* White JPG background blends into the page via multiply. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/brand/bsb-logo.jpg"
+          alt="Brandon's Shredding Boxes — Driver"
+          width={625}
+          height={267}
+          className="mx-auto h-auto w-full max-w-sm mix-blend-multiply"
+        />
+      </h1>
       <p className="mb-6 text-body-md text-on-surface-variant">Sign in to see the runsheet.</p>
 
       <Card>

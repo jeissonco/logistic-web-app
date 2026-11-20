@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { type RunsheetItem, type Stop } from '@logistic/core';
 import { MovementForm } from '@/components/MovementForm';
 import { JobBadge } from '@/components/JobBadge';
+import { BoxSizeChip } from '@/components/BoxSizeChip';
 import { Button, Icon, Spinner } from '@/components/ui';
 import { useRunsheet } from '@/features/runsheet/useRunsheet';
 import { useRecordMovements } from '@/features/runsheet/useRecordMovements';
@@ -30,7 +31,7 @@ export function StopView({ stopId }: { stopId: string }) {
     return (
       <div className="flex flex-col items-center gap-3 py-16 text-center">
         <p className="text-headline-sm text-primary">Stop not found</p>
-        <Link href={`/manifest${q}`} className="text-body-md font-bold text-secondary underline">
+        <Link href={`/manifest${q}`} className="text-body-md font-bold text-secondary-ink underline">
           Back to manifest
         </Link>
       </div>
@@ -80,7 +81,7 @@ function StopHeaderCard({ stop, index, total }: { stop: Stop; index: number; tot
   const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
     [stop.business, stop.location, stop.suburb].filter(Boolean).join(', '),
   )}`;
-  const onFile = [stop.planned.count, stop.planned.boxSize].filter((v) => v != null).join(' × ');
+  const { count: plannedCount, boxSize: plannedSize } = stop.planned;
 
   return (
     <div className="rounded-xl border-2 border-outline-variant bg-surface-container-lowest p-card-padding shadow-lg">
@@ -94,10 +95,11 @@ function StopHeaderCard({ stop, index, total }: { stop: Stop; index: number; tot
         {stop.job ? <JobBadge code={stop.job} /> : null}
       </div>
 
-      {onFile ? (
-        <p className="mt-2 inline-flex items-center gap-2 rounded-lg bg-surface-container-high px-3 py-1.5 text-body-md font-bold text-primary">
+      {plannedSize || plannedCount != null ? (
+        <p className="mt-2 inline-flex items-center gap-2 text-body-md font-bold text-primary">
           <Icon name="inventory_2" className="text-lg" />
-          On file: {onFile}
+          On file:{' '}
+          {plannedSize ? <BoxSizeChip size={plannedSize} count={plannedCount} /> : `${plannedCount}`}
         </p>
       ) : null}
 
@@ -107,7 +109,7 @@ function StopHeaderCard({ stop, index, total }: { stop: Stop; index: number; tot
         rel="noreferrer"
         className="mt-3 flex items-center gap-2 rounded-lg bg-surface-variant p-3 text-body-md text-primary transition active:scale-[0.99]"
       >
-        <Icon name="location_on" className="text-2xl text-secondary" />
+        <Icon name="location_on" className="text-2xl text-secondary-ink" />
         <span className="flex-1">{address || 'Open in Maps'}</span>
         <Icon name="open_in_new" className="text-lg text-on-surface-variant" />
       </a>

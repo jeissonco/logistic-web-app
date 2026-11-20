@@ -1,14 +1,15 @@
 {
-  "name": "Runsheet",
-  "short_name": "Runsheet",
-  "description": "Daily driver runsheet — stops, collections and drops.",
+  "name": "BSB Driver",
+  "short_name": "BSB Driver",
+  "description": "Brandon's Shredding Boxes driver runsheet — stops, collections and drops.",
   "start_url": "/today",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#0f172a",
-  "theme_color": "#0f172a",
+  "background_color": "#f7f6f2",
+  "theme_color": "#2b2b2b",
   "icons": [
-    { "src": "/icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+    { "src": "/brand/bsb-icon.png", "sizes": "300x300", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
   ]
 }

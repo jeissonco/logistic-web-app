@@ -40,7 +40,7 @@ export default function RoutePage() {
       <div className="grid grid-cols-2 gap-4">
         <Link
           href="/manifest"
-          className="col-span-2 rounded-xl border-2 border-transparent bg-surface-container-lowest p-card-padding shadow-lg transition-colors hover:border-secondary"
+          className="col-span-2 rounded-xl border-2 border-transparent bg-surface-container-lowest p-card-padding shadow-lg transition-colors hover:border-secondary-ink"
         >
           <div className="mb-4 flex items-start justify-between">
             <div>
@@ -62,7 +62,7 @@ export default function RoutePage() {
 
         <Link
           href="/days"
-          className="flex aspect-square flex-col justify-between rounded-xl bg-surface-container-lowest p-card-padding shadow-lg transition-colors hover:border-secondary"
+          className="flex aspect-square flex-col justify-between rounded-xl bg-surface-container-lowest p-card-padding shadow-lg transition-colors hover:border-secondary-ink"
         >
           <CalendarGlyph />
           <div>
@@ -73,10 +73,10 @@ export default function RoutePage() {
 
         <Link
           href="/directory"
-          className="flex aspect-square flex-col rounded-xl bg-surface-container-lowest p-card-padding shadow-lg transition-colors hover:border-secondary"
+          className="flex aspect-square flex-col rounded-xl bg-surface-container-lowest p-card-padding shadow-lg transition-colors hover:border-secondary-ink"
         >
           <div className="flex flex-1 items-center justify-center">
-            <Icon name="contact_page" className="text-[64px] text-secondary" />
+            <Icon name="contact_page" className="text-[64px] text-secondary-ink" />
           </div>
           <div>
             <h3 className="text-label-lg text-primary">Directory</h3>
@@ -89,7 +89,7 @@ export default function RoutePage() {
           className="col-span-2 flex items-center gap-4 rounded-xl bg-primary-container p-card-padding shadow-lg transition active:scale-95"
         >
           <span className="rounded-full bg-secondary p-3">
-            <Icon name="phone_in_talk" className="text-3xl text-white" />
+            <Icon name="phone_in_talk" className="text-3xl text-on-secondary" />
           </span>
           <span>
             <span className="block text-headline-sm text-on-primary">Call Office</span>
@@ -118,7 +118,7 @@ function CalendarGlyph() {
   const day = now.getDate();
   return (
     <div className="w-16 overflow-hidden rounded-lg border border-outline-variant shadow-sm">
-      <div className="bg-[#e8710a] py-0.5 text-center text-[11px] font-black tracking-wide text-white">
+      <div className="bg-secondary py-0.5 text-center text-[11px] font-black tracking-wide text-on-secondary">
         {month}
       </div>
       <div className="bg-surface-container-lowest py-1 text-center text-3xl font-black leading-none text-primary">
@@ -139,7 +139,7 @@ function Stat({
 }) {
   return (
     <span className="flex flex-col">
-      <span className={`text-4xl font-black ${accent ? 'text-secondary' : 'text-primary'}`}>
+      <span className={`text-4xl font-black ${accent ? 'text-secondary-ink' : 'text-primary'}`}>
         {value == null ? '—' : String(value).padStart(2, '0')}
       </span>
       <span className="text-label-lg uppercase tracking-wide text-on-surface-variant">{label}</span>

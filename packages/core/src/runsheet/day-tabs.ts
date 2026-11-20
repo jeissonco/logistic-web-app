@@ -4,10 +4,18 @@
  * into dates the app can navigate.
  */
 
-// Weekday word (any length — the sheet mixes "Thu"/"Thur", "Tue"/"Tues", …), a
-// separator, then DD/MM. The weekday's first three letters must be a real day.
-const DAY_TAB_RE = /^([A-Za-z]{3,9})[\s.]+(\d{1,2})\/(\d{1,2})$/;
+// Weekday word, optional separator (space / "." / "-"), then DD/MM. Sheets mix many
+// spellings: "Mon 17/08", "Thur 20/08", "M- 02/11", "Th-12/11", "Sat- 28/11".
+// The weekday is either an abbreviation of a real day name ("M", "Th", "Thur") or
+// starts with a real day's first three letters ("Weds"). The date is authoritative.
+const DAY_TAB_RE = /^([A-Za-z]{1,9})[\s.\-]*(\d{1,2})\/(\d{1,2})$/;
 const WEEKDAY_PREFIXES = new Set(['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']);
+const WEEKDAY_NAMES = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+
+function isWeekdayWord(word: string): boolean {
+  const w = word.toLowerCase();
+  return WEEKDAY_NAMES.some((n) => n.startsWith(w)) || WEEKDAY_PREFIXES.has(w.slice(0, 3));
+}
 
 export interface DayTab {
   /** The tab title exactly as it appears in the spreadsheet. */
@@ -49,7 +57,7 @@ function inferYear(month: number, day: number, ref: Date): number {
 export function parseDayTab(title: string, ref: Date = new Date()): DayTab | null {
   const m = DAY_TAB_RE.exec(title.trim());
   if (!m) return null;
-  if (!WEEKDAY_PREFIXES.has(m[1]!.slice(0, 3).toLowerCase())) return null;
+  if (!isWeekdayWord(m[1]!)) return null;
   const day = Number(m[2]);
   const month = Number(m[3]);
   if (month < 1 || month > 12 || day < 1 || day > 31) return null;

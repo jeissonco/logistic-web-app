@@ -13,7 +13,7 @@ function titleFor(pathname: string): string {
   if (pathname.startsWith('/mapping')) return 'MAPPING';
   if (pathname.startsWith('/profile')) return 'PROFILE';
   if (pathname.startsWith('/days')) return 'DAYS';
-  return 'DELIVERY OPS';
+  return 'BSB DRIVER';
 }
 
 const MENU = [
@@ -45,6 +45,8 @@ export function TopAppBar() {
         >
           <Icon name="menu" className="text-primary" />
         </button>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/brand/bsb-icon.png" alt="" width={36} height={36} className="size-9 mix-blend-multiply" />
         <h1 className="text-headline-sm font-black tracking-tight text-primary">{titleFor(pathname)}</h1>
       </div>
       <Icon name="signal_cellular_alt" className="text-primary" />
@@ -67,7 +69,7 @@ export function TopAppBar() {
                 onClick={() => setOpen(false)}
                 className="flex items-center gap-3 border-t-2 border-outline-variant px-4 py-3 text-body-md text-primary hover:bg-surface-container-high"
               >
-                <Icon name={item.icon} className="text-xl text-secondary" />
+                <Icon name={item.icon} className="text-xl text-secondary-ink" />
                 {item.label}
               </Link>
             ))}

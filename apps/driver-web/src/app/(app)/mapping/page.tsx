@@ -62,7 +62,7 @@ function PlaceCard({ place }: { place: Place }) {
         <h3 className="text-headline-sm text-primary">{place.title}</h3>
         <p className="text-body-md text-on-surface-variant">{place.subtitle}</p>
         <p className="mt-1 flex items-start gap-2 text-body-md text-on-surface">
-          <Icon name="location_on" className="mt-0.5 text-lg text-secondary" />
+          <Icon name="location_on" className="mt-0.5 text-lg text-secondary-ink" />
           {place.address}
         </p>
         <a

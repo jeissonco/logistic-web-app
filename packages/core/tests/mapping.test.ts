@@ -27,7 +27,7 @@ describe('isDividerRow', () => {
 });
 
 describe('real-sheet quirks', () => {
-  it('accepts "Corporate", "240L Locked", "Archive box" and trailing spaces', () => {
+  it('accepts "Corporate", "240L Locked", "archive box" (→ Archive) and trailing spaces', () => {
     const [row] = makeRunsheetGrid([
       { business: 'X', contact: '1', location: '1 St', droppedBoxSize: 'Corporate', pickedBoxSize: 'Big ' },
     ]).slice(7);
@@ -40,7 +40,21 @@ describe('real-sheet quirks', () => {
     ]).slice(7);
     const stop2 = rowToStop(row2!, 0);
     expect(stop2.dropped.boxSize).toBe('240L Locked');
-    expect(stop2.pickedUp.boxSize).toBe('Archive box');
+    expect(stop2.pickedUp.boxSize).toBe('Archive');
+  });
+
+  it('reads the sheet dropdown values "Archive", "Collection" and spaced "240 L"', () => {
+    const [row] = makeRunsheetGrid([
+      { business: 'Z', contact: '1', location: '3 St', droppedBoxSize: 'Archive', pickedBoxSize: 'Collection' },
+    ]).slice(7);
+    const stop = rowToStop(row!, 0);
+    expect(stop.dropped.boxSize).toBe('Archive');
+    expect(stop.pickedUp.boxSize).toBe('Collection');
+
+    const [row2] = makeRunsheetGrid([
+      { business: 'W', contact: '1', location: '4 St', droppedBoxSize: '240 L' },
+    ]).slice(7);
+    expect(rowToStop(row2!, 0).dropped.boxSize).toBe('240L');
   });
 
   it('normalizeJob maps full words and codes to a short code + label', () => {
