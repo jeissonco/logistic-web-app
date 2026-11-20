@@ -71,12 +71,16 @@ Unknown values render grey with the raw text.
 ### Box sizes (J / L / N)
 
 `boxSizeSchema` in [`schemas/index.ts`](../packages/core/src/schemas/index.ts):
-`Small` · `Big` · `100L` · `Corporate` · `240L` · `240L Locked` · `Archive box`.
-`parseBoxSize` also accepts `Corp` and is case/whitespace-insensitive.
+`Small` · `Big` · `100L` · `Corporate` · `240L` · `240L Locked` · `Archive` · `Collection`
+(the sheet's dropdown values). `parseBoxSize` also accepts `Corp`, `240 L`, `Archive box`
+and is case/whitespace-insensitive.
 
 Drivers can currently **select** only `Small · Big · 100L · Corporate · 240L`
 (`SELECTABLE_BOX_SIZES` in [`domain/stop.ts`](../packages/core/src/domain/stop.ts));
-`240L Locked` / `Archive box` are read-only for now.
+`240L Locked` / `Archive` / `Collection` are read-only for now.
+
+In the app, JOB badges and box-size chips use the sheet's own dropdown chip colours
+(`JobBadge.tsx`, `BoxSizeChip.tsx`).
 
 Drivers sometimes write `(nothing)` / `None (0)` in DROPPED/PICKED UP → parsed as
 "no movement". Column D (NOTES/INFO) is the office note shown on the stop; column P

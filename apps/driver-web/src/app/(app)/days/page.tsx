@@ -37,7 +37,7 @@ export default function DaysPage() {
                 className="flex items-center justify-between rounded-xl border-2 border-outline-variant bg-surface-container-lowest p-4 shadow-sm transition active:scale-[0.99]"
               >
                 <span className="flex items-center gap-3">
-                  <Icon name="calendar_today" className="text-secondary" />
+                  <Icon name="calendar_today" className="text-secondary-ink" />
                   <span className="font-bold text-primary">{d.label}</span>
                   {d.date === today ? (
                     <span className="rounded-full bg-secondary-fixed px-2 py-0.5 text-label-lg text-on-secondary-fixed">

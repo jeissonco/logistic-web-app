@@ -54,7 +54,7 @@ export function MovementForm({
           onChange={(e) => setNotes(e.target.value)}
           rows={3}
           placeholder="Anything the office should know…"
-          className="w-full rounded-lg border-2 border-outline-variant bg-surface-container-lowest p-3 text-body-md text-on-surface outline-none focus:border-secondary"
+          className="w-full rounded-lg border-2 border-outline-variant bg-surface-container-lowest p-3 text-body-md text-on-surface outline-none focus:border-secondary-ink"
         />
       </label>
 

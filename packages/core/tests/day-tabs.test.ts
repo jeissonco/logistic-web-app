@@ -25,7 +25,19 @@ describe('parseDayTab', () => {
     expect(parseDayTab('Thursday 13/08', REF)?.date).toBe('2026-08-13');
   });
 
+  it('accepts short dash-style names ("M- 02/11", "Th-12/11", "Sat- 28/11")', () => {
+    const nov = new Date('2026-11-20T09:00:00');
+    expect(parseDayTab('M- 02/11', nov)?.date).toBe('2026-11-02');
+    expect(parseDayTab('T-10/11', nov)?.date).toBe('2026-11-10');
+    expect(parseDayTab('W-11/11', nov)?.date).toBe('2026-11-11');
+    expect(parseDayTab('Th-12/11', nov)?.date).toBe('2026-11-12');
+    expect(parseDayTab('F-20/11', nov)?.date).toBe('2026-11-20');
+    expect(parseDayTab('SAT 7/11', nov)?.date).toBe('2026-11-07');
+    expect(parseDayTab('Sat- 28/11', nov)?.date).toBe('2026-11-28');
+  });
+
   it('rejects non-day tabs and impossible dates', () => {
+    expect(parseDayTab('X-12/11', REF)).toBeNull();
     expect(parseDayTab('Pricing', REF)).toBeNull();
     expect(parseDayTab('Table2_21', REF)).toBeNull();
     expect(parseDayTab('MASTER', REF)).toBeNull();

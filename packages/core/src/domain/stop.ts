@@ -7,7 +7,8 @@ export const BOX_SIZE_LABELS: Record<BoxSize, string> = {
   Corporate: 'Corporate',
   '240L': '240L bin',
   '240L Locked': '240L Locked',
-  'Archive box': 'Archive box',
+  Archive: 'Archive',
+  Collection: 'Collection',
 };
 
 /** Box sizes a driver can currently choose in the drop-off / pick-up form. */
@@ -22,6 +23,7 @@ export function normalizeJob(raw: string): { code: string; label: string } {
   if (v === 'BS' || v === 'BOX SWAP') return { code: 'BS', label: 'Box Swap' };
   if (v === 'DO' || v === 'DROP OFF' || v === 'DROPOFF') return { code: 'DO', label: 'Drop Off' };
   if (v === 'CO' || v === 'COLLECTION') return { code: 'CO', label: 'Collection' };
+  if (v === 'BMB') return { code: 'BMB', label: 'BMB' };
   return { code: raw.trim(), label: raw.trim() };
 }
 

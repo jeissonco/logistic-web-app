@@ -1,0 +1,17 @@
+node_modules
+
+# Local secrets
+.env
+.env*.local
+*.iam.gserviceaccount.com.json
+
+# Build output & test artefacts
+.next/
+out/
+*.tsbuildinfo
+test-results/
+playwright-report/
+apps/driver-web/tests/e2e/__screens__/
+
+# OS
+.DS_Store

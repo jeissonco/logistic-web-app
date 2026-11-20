@@ -6,8 +6,8 @@ export const isoDateSchema = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'expected Y
 /**
  * Box / bin sizes that appear in the runsheet (BOX SIZE, DROPPED, PICKED UP).
  * Values are the literal spreadsheet strings so writes pass its data validation.
- * `240L Locked` and `Archive box` exist in historical rows but drivers can't pick
- * them yet — see `SELECTABLE_BOX_SIZES` in domain/stop.ts.
+ * `240L Locked`, `Archive` and `Collection` are in the sheet's dropdown but drivers
+ * can't pick them yet — see `SELECTABLE_BOX_SIZES` in domain/stop.ts.
  */
 export const boxSizeSchema = z.enum([
   'Small',
@@ -16,7 +16,8 @@ export const boxSizeSchema = z.enum([
   'Corporate',
   '240L',
   '240L Locked',
-  'Archive box',
+  'Archive',
+  'Collection',
 ]);
 export type BoxSize = z.infer<typeof boxSizeSchema>;
 

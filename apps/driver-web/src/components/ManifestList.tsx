@@ -1,9 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import { groupBySection, isStopDone, movementSummary, type RunsheetItem, type Stop } from '@logistic/core';
+import { groupBySection, isStopDone, type RunsheetItem, type Stop } from '@logistic/core';
 import { Icon, cn } from '@/components/ui';
 import { JobBadge } from '@/components/JobBadge';
+import { BoxSizeChip } from '@/components/BoxSizeChip';
 
 export function ManifestList({ items, date }: { items: RunsheetItem[]; date?: string }) {
   const sections = groupBySection(items);
@@ -71,7 +72,7 @@ function StopCardRow({
       )}
     >
       <div className="flex items-start justify-between">
-        <span className="text-label-lg font-black uppercase tracking-wide text-secondary">
+        <span className="text-label-lg font-black uppercase tracking-wide text-secondary-ink">
           Stop #{index}
         </span>
         {stop.job ? <JobBadge code={stop.job} /> : null}
@@ -84,17 +85,27 @@ function StopCardRow({
       </p>
 
       <div className="mt-3 flex items-center justify-between border-t-2 border-outline-variant pt-3">
-        <span className="flex items-center gap-2 text-body-md font-bold text-primary">
+        <span className="flex flex-wrap items-center gap-2 text-body-md font-bold text-primary">
           <Icon name="package_2" className="text-lg" />
           {done ? (
-            <span className="text-safety-green">
-              {[
-                stop.dropped.boxSize && `↓ ${movementSummary(stop.dropped)}`,
-                stop.pickedUp.boxSize && `↑ ${movementSummary(stop.pickedUp)}`,
-              ]
-                .filter(Boolean)
-                .join('  ') || 'Done'}
-            </span>
+            stop.dropped.boxSize || stop.pickedUp.boxSize ? (
+              <>
+                {stop.dropped.boxSize ? (
+                  <span className="inline-flex items-center gap-1" title="Dropped">
+                    ↓ <BoxSizeChip size={stop.dropped.boxSize} count={stop.dropped.count} />
+                  </span>
+                ) : null}
+                {stop.pickedUp.boxSize ? (
+                  <span className="inline-flex items-center gap-1" title="Picked up">
+                    ↑ <BoxSizeChip size={stop.pickedUp.boxSize} count={stop.pickedUp.count} />
+                  </span>
+                ) : null}
+              </>
+            ) : (
+              <span className="text-safety-green">Done</span>
+            )
+          ) : stop.planned.boxSize ? (
+            <BoxSizeChip size={stop.planned.boxSize} count={stop.planned.count} />
           ) : (
             <>Qty: {stop.planned.count ?? '—'}</>
           )}
